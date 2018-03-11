@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>bootstrap Demo</title>
+    <!-- Bootstrap 层叠样式 -->
+    <link href="/demo/resource/css/bootstrap.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      .center-div{
+        position: absolute;
+        top:50%;
+        left:50%;
+        /*background-color: #00FFFF;*/
+        width: 40rem;
+        height: 45rem;
+        margin-top: -25rem;
+        margin-left: -20rem;
+        z-index: 8rem;
+
+      }
+      .logo{
+        position: absolute;
+        width:100%;
+        height: 20%;
+        background: url(/demo/resource/img/logo-my.png) no-repeat;
+        margin-left: 13rem; 
+        z-index: 9rem；
+      }
+      .loginform{
+        position: absolute;
+        top:10rem;
+        width: 100%;
+        background-color: #FFFFFF;
+        border:1px solid #ADD8E6;
+      }
+      .loginform ul li{
+        padding-top: 1rem;
+        padding-right: 5px;
+        padding-left:5px;
+      }
+      
+      .loginform ul li input,.loginform ul li button{
+        height: 5rem;
+        font-size: 2rem;
+      }
+
+
+      
+      body{
+        font-family: "微软雅黑",arial;
+        font-size:12px;
+      }
+
+      #container{
+        /*margin-top:-100px;*/
+        position: absolute;
+        padding-top:0px;
+        height: 61.9%;
+        width: 100%;
+        background-color: #7FFFD4;
+
+      }
+      #output{
+        background-color: #B22222;
+      }
+      #output canvas{
+        /*margin-top: -100px;*/
+        /*background-color: #2F4F4F;*/
+      }
+
+      table tr td{
+        padding-top: 2rem;
+        text-align: center;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .input-group span{
+         /*padding-top:-2px;*/
+        height: 4rem;
+      }
+      .input-group input,td button,.input-group .add-after{
+        /*padding-top:0px;*/
+        /*height: 5.2rem;*/
+        margin-top:1px;
+        height: 4.2rem;
+      } 
+
+      footer{
+        position: absolute;
+        width: 100%;
+        bottom:2rem;
+        line-height: 30px
+      }
+	  .add-after{
+	  	background:#FFFFFF;
+	  	border:0;
+	  }	
+	  img{
+	  	height:3.0rem;
+	  }	
+    </style>
+
+
+  </head>
+  <body>
+    <div  id="container">
+      <div id="output"></div>  
+   </div>
+   <div class="center-div">
+    <div class="logo"></div>
+    <div class="loginform text-center">
+    	<form>
+    	       <table style="width: 100%">
+		          <tr>
+		            <td>
+		            	<h3>资源管理系统</h3>
+		            	<div id="errorMessage">
+		            	</div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <div class="input-group">
+		                <span class="input-group-addon glyphicon glyphicon-user"></span>
+		                <input type="text" class="form-control" 
+		                onfocus="if(this.placeholder=='请输入用户名:')this.placeholder =''" 
+		                onblur="if(this.placeholder=='' && this.value=='')this.placeholder ='请输入用户名:'" 
+		                id="username" placeholder="请输入用户名:">
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <div class="input-group">
+		               <span class="input-group-addon glyphicon glyphicon-lock"></span>   
+		               <input type="password" class="form-control" id="password"
+		                onfocus="if(this.placeholder=='请输入密码:')this.placeholder =''" 
+		                onblur="if(this.placeholder=='' && this.value=='')this.placeholder ='请输入密码:'" 
+		                placeholder="请输入密码:">
+		              </div>              
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <div class="input-group">
+		                <span class="input-group-addon glyphicon glyphicon-hand-right checkbox-pre"></span>   
+		                <input type="text" id="checkCode" class="form-control" 
+		                  onfocus="if(this.placeholder=='验证码')this.placeholder =''" 
+		                  onblur="if(this.placeholder=='' && this.value=='')this.placeholder ='验证码'" 
+		                 placeholder="验证码">
+		                <span class="input-group-btn add-after">
+		                  <img id ="imgdemo" src="/demo/image"  alt="点击刷新" >
+		                   <!--     <img onclick="myReload();" alt="点击刷新" src="http://it.yusys.com.cn/yusys/PictureCheckCode.jpeg?nocache=1520640721851?nocache=1520641194268?nocache=1520641195074?nocache=1520641195690?nocache=1520641196298?nocache=1520641196938?nocache=1520641197548?nocache=1520641198111?nocache=1520641200698?nocache=1520641201594?nocache=1520641213506?nocache=1520641214171?nocache=1520641214403?nocache=1520641214602?nocache=1520641214794?nocache=1520641215012?nocache=1520641215229?nocache=1520641215428?nocache=1520641215650?nocache=1520641216170?nocache=1520641216393?nocache=1520641216634?nocache=1520641216876?nocache=1520641217110?nocache=1520641217345?nocache=1520641217570">-->
+		                </span>
+		              </div>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td>
+		              <button type="button" class="btn btn-primary" style="width:100%;" id="loginBtn">登录</button>              
+		            </td>
+		          </tr>
+		            <tr>
+		              <td class="text-right">
+		                <a  href="#">忘记密码?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		              </td>  
+		            </tr>
+		      </table> 
+      </form>
+    </div> 
+  </div>
+ <footer class="text-center">
+      版权所有：史建凯 Copyright © 1999-2017 just fore power me I CAN PLAY.
+  </footer> 
+   
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/demo/resource/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/demo/resource/js/bootstrap.js"></script>
+    <script src="/demo/resource/js/vector.js"></script>
+     <script type="text/javascript">
+      //动画调用
+      $(function(){
+        //初始化 传入dom id
+        var victor = new Victor("container", "output");
+      });
+
+      /**禁用按键*/
+      document.onkeydown = function(event) {  
+            var target, code, tag;  
+            if (!event) {  
+                event = window.event; //针对ie浏览器  
+                target = event.srcElement;  
+                code = event.keyCode;  
+                alert(code)
+                if (code == 13) {  
+                    tag = target.tagName;  
+                    if (tag == "BUTTON") { return true; }  
+                    else { return false; }  
+                }  
+            }else {  
+                target = event.target; //针对遵循w3c标准的浏览器，如Firefox  
+                code = event.keyCode;  
+                if (code == 13) {  
+                    tag = target.tagName;  
+                    if (tag == "INPUT") { return false; }  
+                    else { return true; }  
+                }
+            }     
+      }
+            
+    /**刷新验证码图标*/
+     
+      $("#imgdemo").click(function(){
+    	  var imgdemo = $("#imgdemo");  
+          imgdemo.attr("src",imgdemo.attr("src")+"?nocache="+new Date().getTime());
+      });
+      
+    /**登陆按钮处理**/  
+      $("#loginBtn").click(function(){	
+    	  	  if($("#username").val() == null || $("#username").val() == ""){
+    	  		$("#errorMessage").html("用户名为空");
+	      	    $("#errorMessage").attr("class","alert alert-danger");
+    	  		  return;
+    	  	  }
+	    	  if($("#password").val() == null || $("#password").val() == ""){
+	    		  $("#errorMessage").html("密码为空");
+		      	  $("#errorMessage").attr("class","alert alert-danger");
+	  	  		  return;
+	  	  	  }
+	    	  if($("#checkCode").val() == null || $("#checkCode").val() == ""){
+	    		  $("#errorMessage").html("验证码为空");
+		      	  $("#errorMessage").attr("class","alert alert-danger");
+	  	  		  return;
+	  	  	  }
+	    	  $("#errorMessage").html("");
+	      	  $("#errorMessage").attr("class","");
+  	  		
+    		  $.post("/demo/user/login2",
+    		  {
+    		    "username" : $("#username").val(),
+    		    "password" : $("#password").val(),
+    		    "checkCode" : $("#checkCode").val()
+    		  },
+    		  function(data,status){
+    		   alert("Data: " + data + "\nStatus: " + status);
+    		   if(status == "success"){
+    			   var obj = JSON.parse(data)
+    			   var statu=obj.status;
+    			   if(statu == "error"){
+    				   $("#errorMessage").html(obj.eMsg);
+    			       $("#errorMessage").attr("class","alert alert-danger");
+    				   $("#imgdemo").click();
+    			   }
+    			   if (statu=="success"){
+    				   $("#errorMessage").html("登陆成功");
+    			       $("#errorMessage").attr("class","alert alert-success");
+    				  
+    				   location.href=obj.path;		   
+    			   }
+    		   }
+    		   	
+    		  });
+    });
+      
+      
+
+    </script>
+  </body>
+</html>

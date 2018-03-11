@@ -1,0 +1,4 @@
+资源映射路径
+spring.mvc.static-path-pattern=/source/**
+资源映射地址
+spring.resources.static-locations=classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:D:/img/

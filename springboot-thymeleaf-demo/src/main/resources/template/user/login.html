@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>登陆页面</title>
+    <!-- Bootstrap 层叠样式 -->
+    <link href="/demo/resource/css/bootstrap.css" rel="stylesheet">
+    <link href="/demo/resource/css/starter-template.css" rel="stylesheet">
+    
+    <style>
+  		.form-control{
+  			margin-top:10px;
+  			margin-bottom:10px;
+  		}
+  		
+  		body{
+  			background-color:#B0E0E6;
+  		}
+  		.container-fuild{
+  			margin-left:20px;
+  			margin-right:20px;
+  			
+  		}
+  	</style>
+    </head>
+  	
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fuild">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" onclick="doref('zhichu')">个人信息</a></li>
+            <li> <a href="/demo/user/loginout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+            <li></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+	<div class="container" style="width:400px;margin-top:100px">
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title" th:text="${message}">用户登陆</h3>
+		  </div>
+		  <div class="panel-body">
+		    <form class="form-signin" role="form" th:action="@{/user/login}"  th:method="post">
+	        <input type="text" class="form-control" placeholder="用户名"  required="required"  name="username"  />
+	        <input type="password" class="form-control" placeholder="密码" required="required"  name="password" />
+	        <div class="row">
+	        	<div class="col-md-1"></div>
+	        	<div class="col-md-5">
+		        	<label class="checkbox">
+		            	<input type="checkbox" value="remember-me" /> 记住我
+		        	</label>
+	        	</div>
+	        	<div class="col-md-1"></div>
+	        	<div class="col-md-5"><button class="btn btn-primary" type="submit">登录</button></div>
+	        </div>
+	       </form>
+		  </div>
+		  
+		</div>
+		<script src="/demo/resource/js/jquery.min.js"></script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	    <script src="/demo/resource/js/bootstrap.js"></script>
+    </div>
+</body>
+</html>

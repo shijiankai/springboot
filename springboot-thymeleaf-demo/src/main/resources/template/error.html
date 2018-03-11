@@ -1,0 +1,47 @@
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>bootstrap Demo</title>
+    <!-- Bootstrap 层叠样式 -->
+    <link href="resource/css/bootstrap.css" rel="stylesheet">
+    <link href="resource/css/starter-template.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    	<style>
+    		.container{
+    			margin-top:200px;
+    		}
+    		body{
+    			background:#F0FFFF;
+    		}
+    	</style>
+  </head>
+  
+  <body>
+ 	
+ 	
+ 	
+ 	<div class="container" style="width:500px;" >
+ 		<div class="panel panel-primary">
+ 			<div class="panel-heading"><h3>页面异常:</h3></div>
+ 			<div class="panel-body">
+ 				<div class="alert alert-danger" role="alert"><label th:text="${message}"></label></div>
+ 			</div>
+ 		</div>
+ 	</div>
+ 	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="resource/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="resource/js/bootstrap.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,42 @@
+spring:
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect  
+  application:
+    name: theymleaf1
+  thymeleaf:
+    prefix: classpath:/template/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html; charset=utf-8
+    cache: false
+    check-template-location: true
+## 静态资源映射访问路径
+  mvc: 
+    static-path-pattern: /resource/**
+## 静态资源映射地址
+  resources:
+    static-locations:
+    - classpath:/static/
+    - classpath:/resources/
+    - classpath:/META-INF/resources/
+    - classpath:/public/
+    - file:D:/img/
+  datasource:
+    url: jdbc:mysql://localhost:3306/accounting?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+server:
+  port: 10001
+  context-path: /demo
+      
+
