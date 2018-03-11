@@ -16,6 +16,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -66,7 +67,7 @@ public class DemoController {
 	
 	@RequestMapping("/user/login")
 	public String login(HttpServletRequest request) {
-		return "/user/login";
+		return "/user/login2";
 	}
 	
 	@RequestMapping("/user/login2")

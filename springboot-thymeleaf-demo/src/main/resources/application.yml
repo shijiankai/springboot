@@ -38,5 +38,12 @@ spring:
 server:
   port: 10001
   context-path: /demo
-      
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+      apache:
+        shiro: DEBUG
+
 
